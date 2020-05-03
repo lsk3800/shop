@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ginage.member.mappers.UserMapper">
+
+	<select id="existMobile" resultType="UserDO">
+		select * from user where mobile=#{mobile};
+	</select>
+	<update id="register">
+		insert into user (MOBILE,PASSWORD,CREATE_TIME)
+		values (#{mobile},#{password},#{create_time})
+	</update>
+
+	<select id="login" resultType="UserDO">
+		select * from user where MOBILE=#{mobile} and PASSWORD =#{password}
+	</select>
+	
+	<select id="isLogined" resultType="UserTokenDO">
+		select * from user_token where USER_ID=#{user_id} and LOGIN_TYPE =#{loginType} 
+		AND IS_AVAILABLE=1
+	</select>
+	
+	<update id="setTokenAvailable">
+		update user_token set IS_AVAILABLE=#{status} where id=#{id}
+	</update>
+	
+	<update id="addUserToken" >
+		insert into user_token (TOKEN,LOGIN_TYPE,DEVICE_INFO,USER_ID,CREATE_TIME)
+		values (#{token},#{loginType},#{deviceInfo},#{user_id},#{create_time})
+	</update>
+
+	<select id="checkUserToken" resultType="UserTokenDO">
+		SELECT * FROM USER_TOKEN WHERE TOKEN=#{TOKEN}
+	</select>
+	<select id="getUserInfoById" resultType="UserOutputDTO">
+		SELECT * FROM USER WHERE USER_ID=#{USER_ID}
+	</select>
+	
+	<select id="checkQQOpenID" resultType="UserDO">
+		SELECT * FROM USER WHERE QQ_OPENID=#{qq_openid}
+	
+	</select>
+	
+	<update id="addQQOpenID" >
+		UPDATE USER SET QQ_OPENID=#{qqOpenID} WHERE USER_ID=#{user_id}
+	</update>
+
+</mapper>

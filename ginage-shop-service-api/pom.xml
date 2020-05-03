@@ -1,0 +1,25 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.ginage</groupId>
+		<artifactId>ginage-shop-parent</artifactId>
+		<version>0.0.1-RELEASE</version>
+	</parent>
+	<artifactId>ginage-shop-service-api</artifactId>
+	<packaging>pom</packaging>
+	<modules>
+		<module>ginage-shop-service-api-weixin</module>
+		<module>ginage-shop-service-api-member</module>
+	</modules>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>com.ginage</groupId>
+			<artifactId>ginage-shop-common-core</artifactId>
+			<version>0.0.1-RELEASE</version>
+		</dependency>
+	</dependencies>
+
+</project>

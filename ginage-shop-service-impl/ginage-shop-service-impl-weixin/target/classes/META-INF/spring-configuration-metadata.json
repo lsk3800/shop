@@ -1,0 +1,17 @@
+{
+  "groups": [
+    {
+      "name": "wx.mp",
+      "type": "com.ginage.weixin.mp.config.WxMpProperties",
+      "sourceType": "com.ginage.weixin.mp.config.WxMpProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "wx.mp.configs",
+      "type": "java.util.List<com.ginage.weixin.mp.config.WxMpProperties$MpConfig>",
+      "sourceType": "com.ginage.weixin.mp.config.WxMpProperties"
+    }
+  ],
+  "hints": []
+}
