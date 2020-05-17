@@ -3,7 +3,7 @@ package com.ginage.member.feign;
 
 import org.springframework.cloud.openfeign.FeignClient;
 
-import com.ginage.service.SSOLoginService;
+import com.ginage.member.service.SSOLoginService;
 
 /**
 *@date:2020年5月1日

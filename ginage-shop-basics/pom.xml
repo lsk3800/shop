@@ -10,5 +10,6 @@
   <modules>
   	<module>ginage-shop-springcloud-eureka</module>
   	<module>ginage-shop-basics-springcloud-zuul</module>
+  	<module>ginage-shop-basics-elk-kafka</module>
   </modules>
 </project>

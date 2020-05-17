@@ -4,7 +4,7 @@ package com.ginage.member.feign;
 import org.springframework.cloud.openfeign.FeignClient;
 
 import com.ginage.member.hystrix.WeixinServiceHystrix;
-import com.ginage.service.WeixinService;
+import com.ginage.weixin.service.WeixinService;
 
 /**
 *@date:2020年3月27日

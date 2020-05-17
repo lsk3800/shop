@@ -21,9 +21,9 @@ import com.ginage.common.core.TokenUtils;
 import com.ginage.member.mappers.UserMapper;
 import com.ginage.member.mappers.entitys.UserDO;
 import com.ginage.member.mappers.entitys.UserTokenDO;
+import com.ginage.member.service.MemberLoginService;
 import com.ginage.output.dto.UserLoginDTO;
 import com.ginage.output.dto.UserOutputDTO;
-import com.ginage.service.MemberLoginService;
 
 /**
  * @date:2020年4月5日

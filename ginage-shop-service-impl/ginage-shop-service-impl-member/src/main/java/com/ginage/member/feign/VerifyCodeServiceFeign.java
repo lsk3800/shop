@@ -4,7 +4,7 @@ package com.ginage.member.feign;
 import org.springframework.cloud.openfeign.FeignClient;
 
 import com.ginage.member.hystrix.VerifyCodeServiceHystrix;
-import com.ginage.service.VerifyCodeService;
+import com.ginage.weixin.service.VerifyCodeService;
 
 /**
 *@date:2020年4月4日

@@ -12,8 +12,8 @@ import com.ginage.common.constants.Constants;
 import com.ginage.member.feign.WeixinServiceFeign;
 import com.ginage.member.mappers.UserMapper;
 import com.ginage.member.mappers.entitys.UserDO;
+import com.ginage.member.service.MemberService;
 import com.ginage.output.dto.UserOutputDTO;
-import com.ginage.service.MemberService;
 
 /**
  * @date:2020年3月27日

@@ -11,7 +11,7 @@ import com.ginage.common.base.BaseApiService;
 import com.ginage.common.base.BaseResponse;
 import com.ginage.common.constants.Constants;
 import com.ginage.common.core.RedisUtils;
-import com.ginage.service.VerifyCodeService;
+import com.ginage.weixin.service.VerifyCodeService;
 
 /**
  * @date:2020年4月2日

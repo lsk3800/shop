@@ -4,7 +4,7 @@ package com.ginage.member.feign;
 import org.springframework.cloud.openfeign.FeignClient;
 
 import com.ginage.member.hystrix.MemberLogoutServiceHystrix;
-import com.ginage.service.MemberLogoutService;
+import com.ginage.member.service.MemberLogoutService;
 
 /**
 *@date:2020年4月16日

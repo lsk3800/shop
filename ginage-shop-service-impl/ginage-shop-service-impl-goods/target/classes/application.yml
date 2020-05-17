@@ -1,0 +1,40 @@
+###服务启动端口号
+server:
+  port: 8500
+###服务名称(服务注册到eureka名称)  
+eureka:
+  client:
+    service-url:
+           defaultZone: http://192.168.154.200:8080/eureka
+
+
+  
+spring:
+  application:
+    name:  app-goods
+  redis:
+    host: 192.168.154.200
+    port: 6379
+    jedis:
+      pool:
+        max-idle: 100
+        min-idle: 1
+        max-active: 1000
+        max-wait: -1
+      
+###数据库相关连接      
+  datasource:
+    username: root
+    password: $lsk348876209
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/shop?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+  data:
+    elasticsearch:
+    ####集群名称
+      cluster-name: elasticsearch-cluster
+    ####地址 
+      cluster-nodes: 192.168.154.200:9300
+  kafka:
+    bootstrap-servers:
+    - 192.168.154.200:9092
+     

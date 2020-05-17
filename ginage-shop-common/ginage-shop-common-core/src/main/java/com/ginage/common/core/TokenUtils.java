@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class TokenUtils {
 
-	public String createToken() {
+	public static String createToken() {
 		String token=UUID.randomUUID().toString().replace("-", "");
 		return token;
 	}

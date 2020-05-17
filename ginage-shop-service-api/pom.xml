@@ -11,6 +11,9 @@
 	<modules>
 		<module>ginage-shop-service-api-weixin</module>
 		<module>ginage-shop-service-api-member</module>
+		<module>ginage-shop-service -api-goods</module>
+		<module>ginage-shop-service-api-goods</module>
+		<module>ginage-shop-service-api-payment</module>
 	</modules>
 
 	<dependencies>

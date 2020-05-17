@@ -20,7 +20,7 @@ import com.ginage.input.dto.UserInputDTO;
 import com.ginage.member.feign.VerifyCodeServiceFeign;
 import com.ginage.member.mappers.UserMapper;
 import com.ginage.member.mappers.entitys.UserDO;
-import com.ginage.service.MemberRegisterService;
+import com.ginage.member.service.MemberRegisterService;
 
 /**
  * @date:2020年4月4日

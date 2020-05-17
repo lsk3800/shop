@@ -4,7 +4,7 @@ package com.ginage.member.feign;
 import org.springframework.cloud.openfeign.FeignClient;
 
 import com.ginage.member.hystrix.QQAuthoriServiceHystrix;
-import com.ginage.service.QQAuthoriService;
+import com.ginage.member.service.QQAuthoriService;
 
 /**
 *@date:2020年4月23日

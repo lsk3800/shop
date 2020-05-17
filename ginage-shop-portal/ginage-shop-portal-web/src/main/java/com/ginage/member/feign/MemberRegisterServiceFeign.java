@@ -3,7 +3,7 @@ package com.ginage.member.feign;
 
 import org.springframework.cloud.openfeign.FeignClient;
 
-import com.ginage.service.MemberRegisterService;
+import com.ginage.member.service.MemberRegisterService;
 
 /**
 *@date:2020年4月11日

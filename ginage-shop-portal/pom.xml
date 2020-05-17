@@ -10,6 +10,7 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>ginage-shop-portal-web</module>
+		<module>ginage-shop-portal-pay-web</module>
 	</modules>
 
 

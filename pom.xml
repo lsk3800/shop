@@ -15,6 +15,7 @@
 		<module>ginage-shop-portal</module>
 		<module>ginage.shop.sso-service</module>
 		<module>ginage-shop-sso-service</module>
+		<module>ginage-shop-pay-plugin</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>

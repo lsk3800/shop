@@ -20,7 +20,7 @@ import com.ginage.common.core.TokenUtils;
 import com.ginage.member.mappers.UserMapper;
 import com.ginage.member.mappers.entitys.UserDO;
 import com.ginage.member.mappers.entitys.UserTokenDO;
-import com.ginage.service.QQAuthoriService;
+import com.ginage.member.service.QQAuthoriService;
 
 /**
  * @date:2020年4月23日

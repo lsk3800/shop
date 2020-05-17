@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
  * @Copyright: ginage.com
  *
  */
-@ControllerAdvice
+//@ControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler extends BaseApiService<JSONObject> {
 

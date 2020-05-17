@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ginage.payment.service.mapper.PaymentChannelMapper">
+
+	<select id="getAllPaymentChannel" resultType="PaymentChannelEntity">
+		SELECT channel_Name AS channelName , channel_Id AS channelId,
+		merchant_Id AS merchantId,sync_Url AS syncUrl, asyn_Url AS asynUrl,
+		public_Key AS publicKey,private_Key AS privateKey,
+		channel_State AS channelState,class_ADDRESS as classAddress FROM
+		payment_channel WHERE CHANNEL_STATE='0';
+
+	</select>
+	<select id="getPaymentChannelById" resultType="PaymentChannelEntity">
+		SELECT channel_Name AS channelName , channel_Id AS channelId,
+		merchant_Id AS merchantId,sync_Url AS syncUrl, asyn_Url AS asynUrl,
+		public_Key AS publicKey,private_Key AS privateKey,
+		channel_State AS channelState,class_ADDRESS as classAddress FROM
+		payment_channel WHERE CHANNEL_STATE='0' and CHANNEL_ID=#{channelId};
+
+	</select>
+	
+	
+</mapper>

@@ -3,7 +3,7 @@ package com.ginage.weixin.feign;
 
 import org.springframework.cloud.openfeign.FeignClient;
 
-import com.ginage.service.MemberService;
+import com.ginage.member.service.MemberService;
 import com.ginage.weixin.hystrix.MemberServiceHystrix;
 
 /**
