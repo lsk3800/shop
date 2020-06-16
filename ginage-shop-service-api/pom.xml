@@ -14,6 +14,8 @@
 		<module>ginage-shop-service -api-goods</module>
 		<module>ginage-shop-service-api-goods</module>
 		<module>ginage-shop-service-api-payment</module>
+		<module>ginage-shop-service-api-spike</module>
+		<module>ginage-shop-service-api-order</module>
 	</modules>
 
 	<dependencies>

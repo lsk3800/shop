@@ -27,6 +27,11 @@
 			<artifactId>ginage-shop-pay-plugin-unionpay</artifactId>
 			<version>0.0.1-RELEASE</version>
 		</dependency>
+		<dependency>
+			<groupId>com.ginage</groupId>
+			<artifactId>ginage-shop-pay-plugin-alipay</artifactId>
+			<version>0.0.1-RELEASE</version>
+		</dependency>
 
 
 		<dependency>
@@ -34,5 +39,18 @@
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
+
+
+		
+		<dependency>
+			<groupId>org.springframework.amqp</groupId>
+			<artifactId>spring-rabbit-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 </project>

@@ -119,6 +119,11 @@ body {
 	line-height: 30px;
 	color: white;
 }
+
+#error {
+	font-size: 40px;
+	text-align: center;
+}
 </style>
 </head>
 
@@ -131,57 +136,66 @@ body {
 			<div class="head-center-user">用户名：xxx</div>
 		</div>
 
+
 		<div class="scent">
-			<div class="scent-order">
-				<div class="scent-order-info">
-					<strong>商品订单：</strong> <span style="color: #b7b0b0;"
-						th:text="${data.orderId}"></span>
+			<p id="error" th:if="${error} != null" th:text="${error}"></p>
+			<div th:if="${error} == null">
+				<div class="scent-order">
+					<div class="scent-order-info">
+						<strong>商品订单：</strong> <span style="color: #b7b0b0;"
+							th:text="${data.orderId}"></span>
+					</div>
+
+					<div class="scent-order-info">
+						<strong>支付金额：</strong> <span
+							style="color: #0ac265; font-size: 15px;"></span><span
+							style="color: red; font-size: 24px;"
+							th:text="'¥'+${#numbers.formatDecimal(data.payAmount/100,1,'COMMA',2,'POINT')}">
+						</span><br />
+					</div>
+					<div class="scent-order-info">
+						<strong>订单详情：</strong>
+						<hr />
+						<div class="scent-order-info-desc">
+							<span>商品名称：蚂蚁课堂-会员充值</span>
+						</div>
+						<div class="scent-order-info-desc">
+							<span th:text="'支付订单：'+${data.paymentId}"></span>
+						</div>
+						<div class="scent-order-info-desc">
+							<span
+								th:text="'应付金额:  ¥'+${#numbers.formatDecimal(data.payAmount/100,1,'COMMA',2,'POINT')}">
+							</span>
+						</div>
+						<div class="scent-order-info-desc">
+							<span th:text="'购买时间: '+${data.createdTime}"></span>
+						</div>
+					</div>
 				</div>
 
-				<div class="scent-order-info">
-					<strong>支付金额：</strong> <span
-						style="color: #0ac265; font-size: 15px;"></span><span
-						style="color: red; font-size: 24px;" th:text="${data.payAmount}">
-					</span><br />
-				</div>
-				<div class="scent-order-info">
-					<strong>订单详情：</strong>
+				<div class="scent-pay">
+					<div class="scent-pay-way">
+						<strong>支付方式</strong>
+					</div>
 					<hr />
-					<div class="scent-order-info-desc">
-						<span>商品名称：蚂蚁课堂-会员充值</span>
-					</div>
-					<div class="scent-order-info-desc">
-						<span th:text="'支付订单：'+${data.paymentId}"></span>
-					</div>
-					<div class="scent-order-info-desc">
-						<span th:text="'应付金额: '+${data.payAmount}"> </span>
-					</div>
-					<div class="scent-order-info-desc">
-						<span th:text="'购买时间: '+${data.createdTime}"></span>
-					</div>
+					<ul>
+						<li class="scent-pay-type" th:each="p : ${paymentChannelList}">
+							<span> <a
+								th:href="'/payHtml?channelId='+${p.channelId}+'&payToken='+${payToken}">
+									<button class="layui-btn layui-btn-primary layui-btn-lg"
+										th:text="${p.channelName}">
+										<i class="layui-icon layui-icon-rmb" style="color: #1E9FFF"></i>
+									</button>
+							</a>
+						</span>
+						</li>
+					</ul>
+
+
 				</div>
+
 			</div>
 
-			<div class="scent-pay">
-				<div class="scent-pay-way">
-					<strong>支付方式</strong>
-				</div>
-				<hr />
-				<ul>
-					<li class="scent-pay-type" th:each="p : ${paymentChannelList}">
-						<span> <a
-							th:href="'/payHtml?channelId='+${p.channelId}+'&payToken='+${payToken}">
-								<button class="layui-btn layui-btn-primary layui-btn-lg"
-									th:text="${p.channelName}">
-									<i class="layui-icon layui-icon-rmb" style="color: #1E9FFF"></i>
-								</button>
-						</a>
-					</span>
-					</li>
-				</ul>
-
-
-			</div>
 		</div>
 
 		<div class="footer">Copyright © 金锅锅</div>

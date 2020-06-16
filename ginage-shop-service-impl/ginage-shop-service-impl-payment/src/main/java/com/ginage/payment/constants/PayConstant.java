@@ -22,4 +22,12 @@ public interface PayConstant {
 	 * 返回银联失败通知
 	 */
 	String YINLIAN_RESULT_FAIL = "fail";
+	/**
+	 * 返回支付宝通知成功
+	 */
+	String ALI_RESULT_SUCCESS = "success";
+	/**
+	 * 返回支付宝失败通知
+	 */
+	String ALI_RESULT_FAIL = "fail";
 }

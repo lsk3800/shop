@@ -37,6 +37,10 @@ public class PaymentTransacServiceImpl extends BaseApiService<JSONObject> implem
 		if(StringUtils.isEmpty(orderID)) {
 			return setResultError("订单号不能为空");
 		}
+		String orderName=createPayTokenDTO.getOrderName();
+		if(StringUtils.isEmpty(orderName)) {
+			return setResultError("订单名称不能为空");
+		}
 		Long payAmount=createPayTokenDTO.getPayAmount();
 		if(payAmount==null) {
 			return setResultError("订单金额不能为空");
@@ -48,6 +52,7 @@ public class PaymentTransacServiceImpl extends BaseApiService<JSONObject> implem
 		
 		PaymentTransactionEntity paymentTransactionEntity=new PaymentTransactionEntity();
 		paymentTransactionEntity.setOrderId(orderID);
+		paymentTransactionEntity.setOrderName(orderName);
 		paymentTransactionEntity.setPayAmount(payAmount);
 		paymentTransactionEntity.setUserId(userID);
 		paymentTransactionEntity.setPaymentId(SnowflakeIdUtils.nextId());
@@ -56,7 +61,7 @@ public class PaymentTransacServiceImpl extends BaseApiService<JSONObject> implem
 		if(result<1) {
 			return setResultError("插入PaymentTransaction错误");
 		}
-		Long id = paymentTransactionEntity.getId();
+		Integer id = paymentTransactionEntity.getId();
 		if(id==null) {
 			return setResultError("获取插入paymentTransaction返回的ID失败");
 		}

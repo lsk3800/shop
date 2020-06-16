@@ -49,7 +49,7 @@ public class PayController extends BaseWebController {
 	@Autowired
 	private PayContextServiceFeign payContextServiceFeign;
 
-	@RequestMapping("/paymentTransation")
+	@RequestMapping("/paymentTransaction")
 	public String paymentTransation(String token, Model model) {
 		if (StringUtils.isEmpty(token)) {
 			setErrorMsg(model, "token不能为空");

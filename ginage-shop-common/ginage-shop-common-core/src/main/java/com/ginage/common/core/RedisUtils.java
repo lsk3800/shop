@@ -6,6 +6,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,8 +87,14 @@ public class RedisUtils {
 		stringRedisTemplateForTransaction.opsForValue().set(key, value, timeout, timeUnit);
 	}
 	
+	public void setList(String key,List<String> values) {
+		redisTemplate.opsForList().leftPushAll(key, values);
+	}
 	
-	
+	public String getListPop(String key) {
+		String leftPop = (String) redisTemplate.opsForList().leftPop(key);
+		return leftPop;
+	}
 	 // ------------------------ serialize and unserialize ------------------------
 
     /**

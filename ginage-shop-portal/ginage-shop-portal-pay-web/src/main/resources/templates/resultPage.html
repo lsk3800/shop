@@ -1,1 +1,9 @@
-resultPage
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<p th:text="'订单号:'+${orderId}"></p>
+	<p th:text="'支付结果:'+${result}"></p>
+	<p th:text="'支付响应码:'+${respCode}"></p>
+</body>
+
+</html>

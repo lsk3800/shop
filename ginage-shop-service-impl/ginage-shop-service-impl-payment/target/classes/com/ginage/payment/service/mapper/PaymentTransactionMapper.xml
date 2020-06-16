@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="insertPaymentTransaction" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO PAYMENT_TRANSACTION
-		(ORDER_ID,PAY_AMOUNT,USER_ID,PAYMENT_ID,CREATED_TIME)
-		VALUES (#{orderId},#{payAmount},#{userId},#{paymentId},#{createdTime})
+		(ORDER_ID,PAY_AMOUNT,USER_ID,PAYMENT_ID,CREATED_TIME,ORDER_NAME)
+		VALUES (#{orderId},#{payAmount},#{userId},#{paymentId},#{createdTime},#{orderName})
 	</insert>
 	<resultMap type="PaymentTransactionEntity" id="PaymentTransaction">
 		<id column="id" property="id" />
@@ -22,6 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="UPDATED_TIME" property="updatedTime" />
 		<result column="PARTYPAY_ID" property="partyPayId" />
 		<result column="PAYMENT_ID" property="paymentId" />
+		<result column="ORDER_NAME" property="orderName" />
 	</resultMap>
 
 	<select id="getPaymentTranscationById" resultMap="PaymentTransaction">
@@ -37,4 +38,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		UPDATE PAYMENT_TRANSACTION SET PAYMENT_STATUS =#{status}
 		WHERE ORDER_ID=#{orderId}
 	</update>
+	
+	<insert id="insterPayLog">
+	INSERT INTO PAYMENT_TRANSACTION_LOG (ASYNC_LOG,CHANNEL_ID,CREATED_TIME,PAY_ID) 
+	VALUES (#{asyncLog},#{channelId},#{createdTime},#{payId})
+	</insert>
 </mapper>

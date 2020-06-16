@@ -14,7 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Component;
 
+import com.alibaba.fastjson.JSONObject;
+import com.ginage.mq.producer.IntegralProducer;
 import com.ginage.payment.callback.AbstractPayCallbackTemplate;
 import com.ginage.payment.constants.PayConstant;
 import com.ginage.payment.service.mapper.PaymentTransactionMapper;
@@ -30,9 +34,12 @@ import com.unionpay.acp.sdk.SDKConstants;
  * @Copyright: ginage.com
  *
  */
+@Component
 public class UnionpayCallback extends AbstractPayCallbackTemplate {
 	@Autowired
 	private PaymentTransactionMapper paymentTransactionMapper;
+	@Autowired
+	private IntegralProducer integralProducer;
 
 	/**
 	 * 业务逻辑实现
@@ -47,7 +54,7 @@ public class UnionpayCallback extends AbstractPayCallbackTemplate {
 		PaymentTransactionEntity paymentTranscation = paymentTransactionMapper.getPaymentTranscationByOrderId(orderId);
 		Integer paymentStatus = paymentTranscation.getPaymentStatus();
 		// 如果状态为1的话代表该订单已经支付过了,直接返回成功
-		if (paymentStatus.equals(PayConstant.RESULT_PAYCODE_200)) {
+		if (PayConstant.PAY_STATUS_SUCCESS.equals(paymentStatus)) {
 			return seccessResult();
 		}
 		// 判断银联返回码,为00或A6为成功,
@@ -55,11 +62,19 @@ public class UnionpayCallback extends AbstractPayCallbackTemplate {
 		if (!(respCode.contentEquals("00") || respCode.contentEquals("A6"))) {
 			return failResult();
 		}
-		//更新订单支付状态
+		// 更新订单支付状态
 		int effect = paymentTransactionMapper.updatePaymentStatus(1, orderId);
 		if (effect < 1) {
 			return failResult();
 		}
+
+		// 增加积分
+		JSONObject jb = new JSONObject();
+		jb.put("userId", paymentTranscation.getUserId());
+		jb.put("paymentId", paymentTranscation.getPaymentId());
+		jb.put("integral", 100);
+		addIntegral(jb);
+
 		return seccessResult();
 	}
 
@@ -99,6 +114,10 @@ public class UnionpayCallback extends AbstractPayCallbackTemplate {
 			// String respCode = reqParam.get("respCode");
 			// 判断respCode=00、A6后，对涉及资金类的交易，请再发起查询接口查询，确定交易成功后更新数据库。
 			reqParam.put(PayConstant.RESULT_NAME, PayConstant.RESULT_PAYCODE_200);
+			reqParam.put("payId", reqParam.get("queryId"));
+			reqParam.put("channelId", "yinlian_pay");
+			reqParam.put("orderId", reqParam.get("orderId"));
+			reqParam.put("asyncLog", reqParam.get("respCode"));
 		}
 
 		return reqParam;
@@ -168,6 +187,11 @@ public class UnionpayCallback extends AbstractPayCallbackTemplate {
 			LogUtil.writeLog("getAllRequestParamStream.IOException error: " + e.getClass() + ":" + e.getMessage());
 		}
 		return res;
+	}
+
+	@Async
+	private void addIntegral(JSONObject jb) {
+		integralProducer.send(jb);
 	}
 
 }

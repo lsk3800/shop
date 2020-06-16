@@ -15,6 +15,11 @@ public class CreatePayTokenDTO {
 	 */
 	@NotNull(message = "订单号码不能为空")
 	private String orderId;
+	/**
+	 * 订单名称
+	 */
+	@NotNull(message = "订单名称不能为空")
+	private String orderName;
 
 	/**
 	 * userId

@@ -71,6 +71,9 @@ public class PayContextServiceImpl extends BaseApiService<JSONObject> implements
 		BeanUtils.copyProperties(paymentChannelEntity, paymentChannelDTO);
 		//调用子类的方法
 		String payHtml = payStrategy.toPayHtml(paymentChannelDTO, paymentTransationInfo.getData());
+		if(StringUtils.isEmpty(payHtml)) {
+			return setResultError("payHtml错误");
+		}
 		JSONObject data = new JSONObject();
 		data.put("payHtml", payHtml);
 		return setResultSuccess(data);

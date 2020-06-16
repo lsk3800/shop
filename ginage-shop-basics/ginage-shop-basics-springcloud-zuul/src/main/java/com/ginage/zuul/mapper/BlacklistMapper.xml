@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ginage.zuul.mapper.BlacklistMapper">
+	<select id="findBlacklist" resultType="IPBlacklist">
+		select ID AS id ,ip_addres AS ipAddres,restriction_type as restrictionType,
+		availability as availability from ipblacklist 
+		where ip_addres =#{ipAddres} and restriction_type='1'
+
+	</select>
+</mapper>

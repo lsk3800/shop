@@ -10,6 +10,7 @@
     {
       "name": "wx.mp.configs",
       "type": "java.util.List<com.ginage.weixin.mp.config.WxMpProperties$MpConfig>",
+      "description": "Description for wx.mp.configs.",
       "sourceType": "com.ginage.weixin.mp.config.WxMpProperties"
     }
   ],

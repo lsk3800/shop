@@ -10,7 +10,7 @@ import lombok.Data;
 public class PaymentTransactionEntity {
 	/** 主键ID */
 	@Id
-	private Long id;
+	private Integer id;
 	/** 支付金额 */
 	private Long payAmount;
 	/** 支付状态;0待支付1已经支付2支付超时3支付失败 */
@@ -19,6 +19,8 @@ public class PaymentTransactionEntity {
 	private Long userId;
 	/** 订单号码 */
 	private String orderId;
+	/** 商品名称 */
+	private String orderName;
 	/** 乐观锁 */
 	private Integer revision;
 	/** 创建人 */
@@ -33,7 +35,7 @@ public class PaymentTransactionEntity {
 	/**
 	 * 第三方支付id 支付宝、银联等 在第三方支付渠道完成后分配一个支付id 对账使用
 	 */
-	private String partyPayId;
+	private String payId;
 
 	/**
 	 * 使用雪花算法生产 支付系统 支付id

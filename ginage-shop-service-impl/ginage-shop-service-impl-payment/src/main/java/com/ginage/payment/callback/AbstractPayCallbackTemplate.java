@@ -1,12 +1,21 @@
 
 package com.ginage.payment.callback;
 
+import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Component;
+
+import com.alibaba.fastjson.JSONObject;
+import com.ginage.mq.producer.IntegralProducer;
 import com.ginage.payment.constants.PayConstant;
+import com.ginage.payment.service.mapper.PaymentTransactionMapper;
+import com.ginage.payment.service.mapper.entity.PaymentTransactionLogEntity;
 
 /**
  * @date:2020年5月17日
@@ -14,8 +23,10 @@ import com.ginage.payment.constants.PayConstant;
  * @Copyright: ginage.com
  *
  */
+@Component
 public abstract class AbstractPayCallbackTemplate {
-
+	@Autowired
+	private PaymentTransactionMapper paymentTransactionMapper;
 	public String asyncCallback(HttpServletRequest request, HttpServletResponse response) {
 		// 获取参数并验证
 		Map<String, String> verifySignature = verifySignature(request, response);
@@ -43,8 +54,18 @@ public abstract class AbstractPayCallbackTemplate {
 	 * 
 	 * @param verifySignature
 	 */
+	@Async
 	protected void payLog(Map<String, String> verifySignature) {
 		
+		PaymentTransactionLogEntity paymentTransactionLogEntity = new PaymentTransactionLogEntity();
+		paymentTransactionLogEntity.setAsyncLog(verifySignature.get("respCode"));
+		paymentTransactionLogEntity.setChannelId(verifySignature.get("channelId"));
+		paymentTransactionLogEntity.setOrderId(verifySignature.get("orderId"));
+		paymentTransactionLogEntity.setCreatedTime(new Date());
+		paymentTransactionLogEntity.setPayId(verifySignature.get("payId"));
+		paymentTransactionMapper.insterPayLog(paymentTransactionLogEntity);
+		
+
 	}
 
 	/**
@@ -53,9 +74,11 @@ public abstract class AbstractPayCallbackTemplate {
 	 * @return
 	 */
 	protected abstract String failResult();
+
 	/**
 	 * 
 	 * 验证成功
+	 * 
 	 * @return
 	 */
 	protected abstract String seccessResult();

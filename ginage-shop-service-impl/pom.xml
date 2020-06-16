@@ -13,6 +13,9 @@
 		<module>ginage-shop-service-impl-member</module>
 		<module>ginage-shop-service-impl-goods</module>
 		<module>ginage-shop-service-impl-payment</module>
+		<module>ginage-shop-service-impl-Integral</module>
+		<module>ginage-shop-service-impl-spike</module>
+		<module>ginage-shop-service-impl-order</module>
 	</modules>
 
 	<dependencies>

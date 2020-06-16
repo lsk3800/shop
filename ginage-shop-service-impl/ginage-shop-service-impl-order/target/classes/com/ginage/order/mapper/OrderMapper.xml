@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ginage.order.mapper.OrderMapper">
+	<insert id="createSpikeOrder">
+		INSERT INTO ORDERLIST (ORDER_ID,PRODUCT_ID,PHONE_NUM,CREATED_TIME)
+		VALUES (#{orderId},#{productId},#{phoneNum},#{createdTime})
+	</insert>
+
+	<select id="querySpikeResult" resultType="OrderEntity">
+
+		SELECT ID FROM ORDERLIST WHERE PHONE_NUM=#{phoneNum} AND PRODUCT_ID=#{productId} limit 1
+	</select>
+</mapper>

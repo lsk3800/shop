@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.ginage.payment.service.mapper.entity.PaymentTransactionEntity;
+import com.ginage.payment.service.mapper.entity.PaymentTransactionLogEntity;
 
 
 /**
@@ -23,4 +24,6 @@ public interface PaymentTransactionMapper {
 	public PaymentTransactionEntity getPaymentTranscationByOrderId(String orderId);
 
 	public int updatePaymentStatus(@Param("status") int status,@Param("orderId") String orderId);
+
+	public int insterPayLog(PaymentTransactionLogEntity paymentTransactionLogEntity);
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ginage.integral.mapper.IntegralMapper">
+
+<insert id="addIntegral">
+	INSERT INTO INTEGRAL (USER_ID,PAYMENT_ID,INTEGRAL,AVAILABILITY,CREATED_TIME,UPDATED_TIME)
+	 VALUES(#{userId},#{paymentId},#{integral},#{availability},#{createdTime},#{updatedTime})
+</insert>
+</mapper>

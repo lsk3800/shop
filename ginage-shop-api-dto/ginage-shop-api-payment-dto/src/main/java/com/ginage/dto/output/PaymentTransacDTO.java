@@ -17,6 +17,8 @@ public class PaymentTransacDTO {
 	private Integer userId;
 	/** 订单号码 */
 	private String orderId;
+	/** 商品名称 */
+	private String orderName;
 
 	/** 创建时间 */
 	private Date createdTime;
